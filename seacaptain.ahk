@@ -10,6 +10,8 @@ Menu, Tray, Icon, icon.ico
 ;==================return
 
 #include *i %A_ScriptDir%\lib\win.ahk
+#include *i %A_ScriptDir%\lib\mintty.ahk
+#include *i %A_ScriptDir%\lib\mediakeys.ahk
 
 ;==================
 ; Hotkeys

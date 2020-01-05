@@ -8,7 +8,7 @@ Gui, Font, s12, Consolas
 Gui, Color, 1B1918
 Gui, Add, ListView, -Hdr -E0x200 cD5911A Background1B1918, Name
 
-Loop, %A_ScriptDir%\shortcuts\*.*
+Loop, %A_ScriptDir%\shortcuts\*.lnk
     LV_Add("", A_LoopFileName)
     
 ;lv_modifycol(1, 275)
