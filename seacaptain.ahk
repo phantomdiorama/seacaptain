@@ -7,34 +7,14 @@ Menu, Tray, Icon, icon.ico
 
 ;==================
 ; Includes
-;==================return
+;==================
 
-#include *i %A_ScriptDir%\lib\win.ahk
 #include *i %A_ScriptDir%\lib\mintty.ahk
 #include *i %A_ScriptDir%\lib\mediakeys.ahk
 
 ;==================
 ; Hotkeys
 ;==================
-
-;kill window
-Capslock & q::
-SendInput, !{F4}
-return 
-
-;kill all windows
-Capslock & k::
-MsgBox, 4,, Close all windows?
-IfMsgBox Yes
-{
-    GroupAdd, AllWindows
-    WinClose ahk_group AllWindows
-}
-else
-{
-    return 
-}
-return 
 
 ; open application launcher
 Capslock & d::
@@ -52,11 +32,91 @@ Run, "C:\Program Files\Mozilla Firefox\firefox.exe"
 return 
 
 ;open email
-Capslock & m::
+Capslock & e::
 Run, "C:\Program Files\Windows Live\Mail\wlmail.exe"
 return 
 
-;file manager
-Capslock & e::
-Run, explorer
+;====================
+; Windows, Sizing and Movement
+;====================
+
+;kill window
+Capslock & q::
+SendInput, !{F4}
+return 
+
+; MinMax
+Capslock & f::
+WinGet, OutputVar, MinMax, A
+if OutputVar = 0
+{
+WinMaximize, A
+}
+else
+{
+ WinRestore, A
+}
+return
+
+; Up
+CapsLock & Up::
+if GetKeyState("Shift")
+{
+    WinGetPos, , , x, y, A
+    y -= 100
+    WinMove, A, , , , %x%, %y%
+}
+else {
+    WinGetPos, x, y, , , A
+    y -= 100
+    WinMove, A,, %x%, %y% 
+}
+return 
+
+; Down
+CapsLock & Down::
+if GetKeyState("Shift")
+{
+    WinGetPos, , , x, y, A
+    y += 100
+    WinMove, A, , , , %x%, %y%
+}
+else 
+{
+    WinGetPos, x, y, , , A
+    y += 100
+    WinMove, A,, %x%, %y% 
+}
+return 
+
+; Left
+CapsLock & Left::
+if GetKeyState("Shift")
+{
+    WinGetPos, , , x, y, A
+    x -= 100
+    WinMove, A, , , , %x%, %y%
+}
+else
+{
+    WinGetPos, x, y, , , A
+    x -= 100
+    WinMove, A,, %x%, %y% 
+} 
+return 
+
+; Right
+CapsLock & Right::
+if GetKeyState("Shift")
+{
+    WinGetPos, , , x, y, A
+    x += 100
+    WinMove, A, , , , %x%, %y%
+}
+else
+{
+    WinGetPos, x, y, , , A
+    x += 100
+    WinMove, A,, %x%, %y% 
+}
 return 

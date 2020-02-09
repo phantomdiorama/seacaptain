@@ -6,17 +6,13 @@
 ### Hotkeys
 <kbd>Capslock</kbd> + <kbd>q</kbd>..............kill window
 
-<kbd>Capslock</kbd> + <kbd>k</kbd>..............kill all windows
-
 <kbd>Capslock</kbd> + <kbd>d</kbd>..............open application launcher
 
 <kbd>Capslock</kbd> + <kbd>a</kbd>..............open terminal
 
 <kbd>Capslock</kbd> + <kbd>s</kbd>..............open browser
 
-<kbd>Capslock</kbd> + <kbd>m</kbd>..............open email
-
-<kbd>Capslock</kbd> + <kbd>e</kbd>..............open file manager
+<kbd>Capslock</kbd> + <kbd>e</kbd>..............open email
 
 
 ### Windows 
@@ -44,3 +40,6 @@
 <kbd>Capslock</kbd> + <kbd>h</kbd>..............split horizontal (buggy)
 
 <kbd>Capslock</kbd> + <kbd>w</kbd> , <kbd>0-9</kbd>.......activate window
+
+### Tested On
+Windows 7 32bit and AutoHotKey 1.1.30.00

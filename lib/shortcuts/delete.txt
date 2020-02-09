@@ -1,1 +1,1 @@
-put shortcuts here
+put shortcuts (*.lnk) here

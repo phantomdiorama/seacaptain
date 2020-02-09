@@ -16,12 +16,6 @@ return
 return
 #If 
 
-; #IfWinExist ahk_class Chrome_WidgetWin_0 ;Spotify
-; !Wheelup::ControlSend, ahk_parent, ^{Up}  ; Vol Up
-; !WheelDown::ControlSend, ahk_parent, ^{Down}  ; Vol Down
-; return
-; #If 
-
 #IfWinExist ahk_class MediaPlayerClassicW ;MPC-HC
 !Wheelup::SendMessage,0x0111,907,,,ahk_class MediaPlayerClassicW
 !WheelDown::SendMessage,0x0111,908,,,ahk_class MediaPlayerClassicW
