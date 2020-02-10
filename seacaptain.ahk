@@ -11,15 +11,12 @@ Menu, Tray, Icon, icon.ico
 
 #include *i %A_ScriptDir%\lib\mintty.ahk
 #include *i %A_ScriptDir%\lib\mediakeys.ahk
+#include *i %A_ScriptDir%\lib\fzf_menu.ahk
+#include *i %A_ScriptDir%\lib\fzf_explorer.ahk
 
 ;==================
 ; Hotkeys
 ;==================
-
-; open application launcher
-Capslock & d::
-Run, %A_ScriptDir%\lib\dmenu.ahk
-return 
 
 ;open new terminal
 Capslock & a::
@@ -27,7 +24,7 @@ Run, "C:\Program Files\Git\git-bash.exe" --cd-to-home
 return 
 
 ;open browser
-Capslock & s::
+Capslock & w::
 Run, "C:\Program Files\Mozilla Firefox\firefox.exe"
 return 
 
