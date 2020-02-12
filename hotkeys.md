@@ -12,10 +12,10 @@ Capslock + s	fuzzy search at folder
 
 ### Windows 
 
-Capslock + q						kill window
+Capslock + q	close window
 
-Capslock + f						maximize/restore
+Capslock + f	maximize/restore
 
-Capslock + Up/Down/Left/Right			move window
+Capslock + Up/Down/Left/Right	move window
 
 Capslock + Shift + Up/Down/Left/Right	resize window up
