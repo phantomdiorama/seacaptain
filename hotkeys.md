@@ -19,3 +19,5 @@ Capslock + f	maximize/restore
 Capslock + Up/Down/Left/Right	move window
 
 Capslock + Shift + Up/Down/Left/Right	resize window up
+
+Capslock + Numpad	tiling
