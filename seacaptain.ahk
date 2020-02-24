@@ -1,55 +1,70 @@
-﻿#NoEnv
+﻿;-------------------------------;
+;			SeaCaptain			;
+;-------------------------------;
+
+gap := 6
+TaskBar := 40
+
+;----do not edit beyond here------;
+
+FullGap := gap * 2
+
+TaskHeight := A_ScreenHeight - TaskBar
+TileWidth := (A_ScreenWidth / 2) - FullGap 
+TileHeight := (TaskHeight / 2) - FullGap 
+FullTileHeight := (TaskHeight - FullGap)
+
+RightTilePos := (A_ScreenWidth / 2) + gap
+BottomTilePos := (TaskHeight / 2) + gap
+
+
+VERSION := 1.0
+
+#NoEnv
 #Warn
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 SetCapsLockState, AlwaysOff
 Menu, Tray, Icon, icon.ico
+Menu, Tray, Tip, SeaCaptain %VERSION%
 
-;============
-; Variables
-;============
-gap := 6
-TaskBar := 40
 
-TaskHeight := A_ScreenHeight - TaskBar
-TileWidth := (A_ScreenWidth / 2) - 12
-TileHeight := (TaskHeight / 2) - 12
-FullTileHeight := (TaskHeight - 12)
-
-RightTilePos := (A_ScreenWidth / 2) + 6
-BottomTilePos := (TaskHeight / 2) + 6
-
-;==================
-; Includes
-;==================
-
-#include *i %A_ScriptDir%\lib\mintty.ahk
-#include *i %A_ScriptDir%\lib\mediakeys.ahk
-#include *i %A_ScriptDir%\lib\fzf_menu.ahk
-#include *i %A_ScriptDir%\lib\fzf_explorer.ahk
-
-;==================
-; Hotkeys
-;==================
+;-----------;
+; Terminal	;
+;-----------;
 
 ;open new terminal
 Capslock & a::
 Run, "C:\Program Files\Git\git-bash.exe" --cd-to-home
 return 
 
-;open browser
-Capslock & w::
-Run, "C:\Program Files\Mozilla Firefox\firefox.exe"
+;open new terminal at folder
+#If WinActive("ahk_class CabinetWClass")
+Capslock & a::
+WinGetTitle, Title, A
+Run  C:\Program Files\Git\git-bash.exe --cd="%Title%"
+return 
+#If 
+
+
+;-------;
+; FZF	;
+;-------;
+
+Capslock & d::
+Run cmd /K cd %A_ScriptDir%\shortcuts & fzf --bind "enter:execute(START "{}" "{}")+accept+execute(%A_ScriptDir%\kill_cmd.ahk)"
 return 
 
-;open email
-Capslock & e::
-Run, "C:\Program Files\Windows Live\Mail\wlmail.exe"
+#If WinActive("ahk_class CabinetWClass")
+Capslock & s::
+WinGetTitle, Title, A
+Run cmd /K cd %Title% & fzf --bind "enter:execute(START "{}" "{}")+accept+execute(%A_ScriptDir%\kill_cmd.ahk)"
 return 
+#If 
 
-;====================
-; Windows, Sizing and Movement
-;====================
+;-------------------------------;
+; Windows, Sizing and Movement	;
+;-------------------------------;
 
 ;kill window
 Capslock & q::
@@ -133,34 +148,37 @@ else
 return 
 
 
-;====================
-; Windows Tiling
-;====================
-
-
+;-------------------;
+; Windows Tiling	;
+;-------------------;
 
 ;Left
-CapsLock & Numpad7::
-WinMove, A,,%gap%,%gap%, %TileWidth%, %TileHeight%, 
-return 
-
-CapsLock & Numpad4::
+CapsLock & ,::
 WinMove, A,,%gap%,%gap%, %TileWidth%, %FullTileHeight%, 
 return 
 
-CapsLock & Numpad1::
-WinMove, A,,%gap%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
-return 
-
 ;Right
-CapsLock & Numpad9::
-WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %TileHeight%, 
-return 
-
-CapsLock & Numpad6::
+CapsLock & .::
 WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %FullTileHeight%, 
 return 
 
-CapsLock & Numpad3::
+
+;Left Top
+CapsLock & RAlt::
+WinMove, A,,%gap%,%gap%, %TileWidth%, %TileHeight%, 
+return 
+
+;Right Top
+CapsLock & RWin::
+WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %TileHeight%, 
+return 
+
+;Left Bottom
+CapsLock & AppsKey::
+WinMove, A,,%gap%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
+return 
+
+;Right Bottom
+CapsLock & RCtrl::
 WinMove, A,,%RightTilePos%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
 return 
