@@ -1,19 +1,17 @@
-﻿;-------------------------------;
-;			SeaCaptain			;
-;-------------------------------;
+﻿;--------------;
+;--SeaCaptain--;
+;--------------;
 
-gap := 6
-TaskBar := 40
+gap := 24
+TaskBar := 32
 
 ;----do not edit beyond here------;
 
 FullGap := gap * 2
-
-TaskHeight := A_ScreenHeight - TaskBar
+TaskHeight := A_ScreenHeight - TaskBar 
 TileWidth := (A_ScreenWidth / 2) - FullGap 
 TileHeight := (TaskHeight / 2) - FullGap 
 FullTileHeight := (TaskHeight - FullGap)
-
 RightTilePos := (A_ScreenWidth / 2) + gap
 BottomTilePos := (TaskHeight / 2) + gap
 
@@ -28,10 +26,10 @@ SetCapsLockState, AlwaysOff
 Menu, Tray, Icon, icon.ico
 Menu, Tray, Tip, SeaCaptain %VERSION%
 
+#include seamenu.ahk
+#include *i %A_ScriptDir%\lib\Easy Window Dragging .ahk
 
-;-----------;
-; Terminal	;
-;-----------;
+;--Terminal--;
 
 ;open new terminal
 Capslock & a::
@@ -46,25 +44,7 @@ Run  C:\Program Files\Git\git-bash.exe --cd="%Title%"
 return 
 #If 
 
-
-;-------;
-; FZF	;
-;-------;
-
-Capslock & d::
-Run cmd /K cd %A_ScriptDir%\shortcuts & fzf --bind "enter:execute(START "{}" "{}")+accept+execute(%A_ScriptDir%\kill_cmd.ahk)"
-return 
-
-#If WinActive("ahk_class CabinetWClass")
-Capslock & s::
-WinGetTitle, Title, A
-Run cmd /K cd %Title% & fzf --bind "enter:execute(START "{}" "{}")+accept+execute(%A_ScriptDir%\kill_cmd.ahk)"
-return 
-#If 
-
-;-------------------------------;
-; Windows, Sizing and Movement	;
-;-------------------------------;
+;--Windows, Sizing and Movement--;
 
 ;kill window
 Capslock & q::
@@ -147,10 +127,7 @@ else
 }
 return 
 
-
-;-------------------;
-; Windows Tiling	;
-;-------------------;
+;--Windows Tiling--;
 
 ;Left
 CapsLock & ,::
@@ -181,4 +158,12 @@ return
 ;Right Bottom
 CapsLock & RCtrl::
 WinMove, A,,%RightTilePos%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
+return 
+
+;--Centre Window--;
+
+CapsLock & c::
+WinExist("A")
+WinGetPos,,, sizeX, sizeY
+WinMove, (A_ScreenWidth/2)-(sizeX/2), (A_ScreenHeight/2)-(sizeY/2)
 return 
