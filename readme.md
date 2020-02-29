@@ -6,29 +6,22 @@ A kinda sort of window mnager that builds on Windows defaults
 * Git
 
 ### Window Management
-```
-Capslock + q	                                                    close window
-
-Capslock + f                                                        maximize/restore
-
-Capslock + arrows   	                                        move window
-
-Capslock + mouse left                                        move window
-
-Capslock + Shift + arrows	                            resize window
-
-Capslock + c                                                       center window
-
-Capslock + , .                                                      pseudo tile left/right
-
-Capslock + RAlt/RWin/Appskey/RCtrl          pseudo tile quarters 
-```
+**Key**|**Action**
+:-----:|:-----:
+Capslock + q|close window
+Capslock + f|maximize/restore
+Capslock + arrows|move window
+Capslock + mouse left|move window
+Capslock + Shift + arrows|resize window
+Capslock + c|center window
+Capslock + , .|pseudo tile left/right
+Capslock + RAlt/RWin/Appskey/RCtrl|pseudo tile quarters
 ### Hotkeys
-```
-Middle mouse            open seamenu (ondesktop)
+**key**|**action**
+:-----:|:-----:
+Middle mouse|open seamenu (on desktop)
+Capslock + a|open terminal / open terminal at folder
 
-Capslock + a	            open terminal / open terminal at folder
-```
 
 ### Todo
 * Better pseudo tiling
