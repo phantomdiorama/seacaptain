@@ -2,53 +2,32 @@
 ;--SeaCaptain--;
 ;--------------;
 
-gap := 24
-TaskBar := 32
-
-;----do not edit beyond here------;
-
-FullGap := gap * 2
-TaskHeight := A_ScreenHeight - TaskBar 
-TileWidth := (A_ScreenWidth / 2) - FullGap 
-TileHeight := (TaskHeight / 2) - FullGap 
-FullTileHeight := (TaskHeight - FullGap)
-RightTilePos := (A_ScreenWidth / 2) + gap
-BottomTilePos := (TaskHeight / 2) + gap
-
-
-VERSION := 1.0
-
 #NoEnv
 #Warn
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 SetCapsLockState, AlwaysOff
 Menu, Tray, Icon, icon.ico
-Menu, Tray, Tip, SeaCaptain %VERSION%
+#include *i %A_ScriptDir%\lib\tile.ahk
 
-#include seamenu.ahk
-#include *i %A_ScriptDir%\lib\Easy Window Dragging .ahk
-
-;--Terminal--;
-
-;open new terminal
-Capslock & a::
-Run, "C:\Program Files\Git\git-bash.exe" --cd-to-home
+CapsLock & r::
+Reload
 return 
-
-;open new terminal at folder
-#If WinActive("ahk_class CabinetWClass")
-Capslock & a::
-WinGetTitle, Title, A
-Run  C:\Program Files\Git\git-bash.exe --cd="%Title%"
-return 
-#If 
 
 ;--Windows, Sizing and Movement--;
 
 ;kill window
+
 Capslock & q::
 SendInput, !{F4}
+return 
+
+CapsLock & rbutton::
+WinGetActiveTitle, Title
+If MouseIsOver(Title)
+{ 
+WinClose, A
+}
 return 
 
 ; MinMax
@@ -127,43 +106,26 @@ else
 }
 return 
 
-;--Windows Tiling--;
-
-;Left
-CapsLock & ,::
-WinMove, A,,%gap%,%gap%, %TileWidth%, %FullTileHeight%, 
-return 
-
-;Right
-CapsLock & .::
-WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %FullTileHeight%, 
-return 
-
-
-;Left Top
-CapsLock & RAlt::
-WinMove, A,,%gap%,%gap%, %TileWidth%, %TileHeight%, 
-return 
-
-;Right Top
-CapsLock & RWin::
-WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %TileHeight%, 
-return 
-
-;Left Bottom
-CapsLock & AppsKey::
-WinMove, A,,%gap%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
-return 
-
-;Right Bottom
-CapsLock & RCtrl::
-WinMove, A,,%RightTilePos%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
-return 
-
 ;--Centre Window--;
-
 CapsLock & c::
 WinExist("A")
 WinGetPos,,, sizeX, sizeY
 WinMove, (A_ScreenWidth/2)-(sizeX/2), (A_ScreenHeight/2)-(sizeY/2)
 return 
+
+;--SeaMenu--;
+#If MouseIsOver("ahk_class Progman") or MouseIsOver("ahk_class WorkerW")
+mbutton::
+Run, %A_ScriptDir%\lib\seamenu.ahk
+return 
+#If 
+
+MouseIsOver(WinTitle) {
+    MouseGetPos,,, Win
+    return WinExist(WinTitle . " ahk_id " . Win)
+}
+return 
+
+#include %A_ScriptDir%\lib\seamenu.ahk
+#include *i %A_ScriptDir%\lib\easy.ahk
+#include *i %A_ScriptDir%\lib\term.ahk

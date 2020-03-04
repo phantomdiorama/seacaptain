@@ -1,9 +1,9 @@
 ﻿#NoEnv
 #Warn
 SendMode Input
-SetWorkingDir %A_ScriptDir% 
+SetWorkingDir %A_ScriptDir%
 
-Loop Files, menu\*.lnk 
+Loop Files, %A_ScriptDir%\menu\*.lnk 
 {
 	MenuString := A_LoopFileName
 	word_array := StrSplit(MenuString, ".")
@@ -15,10 +15,11 @@ Menu, System, Add, Add menu item, FolderHandler
 Menu, System, Add, Control Panel, ControlHandler
 Menu, System, Add, Recycle Bin, RecycleHandler
 Menu, SeaMenu, Add, System, :System
+Menu, SeaMenu, show
 return 
 
 MenuHandler:
-run menu\%A_ThisMenuItem%.lnk
+run %A_ScriptDir%\menu\%A_ThisMenuItem%.lnk
 return 
 
 FolderHandler:
@@ -32,15 +33,3 @@ return
 RecycleHandler:
 run recycle bin  
 return 
-
-#If MouseIsOver("ahk_class Progman") or MouseIsOver("ahk_class WorkerW")
-Capslock & d::
-mbutton::
-Menu, SeaMenu, show
-return 
-#If 
-
-MouseIsOver(WinTitle) {
-    MouseGetPos,,, Win
-    return WinExist(WinTitle . " ahk_id " . Win)
-}

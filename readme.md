@@ -1,9 +1,9 @@
 ## Sea Captain
-A kinda sort of window mnager that builds on Windows defaults
+A kinda sort of window manager that builds on Windows defaults
 
 ### Requirements
 * [AutoHotKey](https://autohotkey.com/download/)
-* Git
+
 
 ### Window Management
 **Key**|**Action**
