@@ -1,5 +1,7 @@
 ## Sea Captain
-A kinda sort of window manager that builds on Windows defaults
+A kinda sorta not really window manager that builds on Windows' defaults. 
+
+**Note:** Development is very active. Things will change a lot.
 
 ### Requirements
 * [AutoHotKey](https://autohotkey.com/download/)
@@ -8,33 +10,40 @@ A kinda sort of window manager that builds on Windows defaults
 ### Window Management
 **Key**|**Action**
 :-----:|:-----:
-Capslock + q|close window
-Capslock + f|maximize/restore
-Capslock + arrows|move window
-Capslock + mouse left|move window
-Capslock + Shift + arrows|resize window
-Capslock + c|center window
-Capslock + , .|pseudo tile left/right
-Capslock + RAlt/RWin/Appskey/RCtrl|pseudo tile quarters
+Windows + q|Close window
+Windows + f|Fullscreen toggle
+Windows + Arrows|Move window
+Alt + Arrows|Resize window
+Windows + c|Center window
+Windows + , .|Pseudo tile left/right
+Windows + RAlt/RWin/Appskey/RCtrl|Pseudo tile corners
+Windows + Mouse left|Move window
+Windows + Mouse Right|Close window
+Middle Mouse (on taskbar)|Minimize all
+
 ### Hotkeys
 **key**|**action**
 :-----:|:-----:
-Middle mouse|open seamenu (on desktop)
-Capslock + a|open terminal / open terminal at folder
-
-
-### Todo
-* Better pseudo tiling
-* Unified settings file
+Middle mouse (on desktop)|open seamenu 
+Windows + space|open terminal / open terminal at folder*
+Windows + r|reload
 
 ### Changelog
+- Mar 9, 2020: Version 1.5
+    - SeaCaptain was conceived as a way to give a use to the useless `CapsLock` key. But after extended use the ergonomics were not quite right, so hotkeys have been adapted to use the `Win` key.
+    - System menu items now work correctly.
 - Feb 29, 2020: Version 1.0
+    - First 'fully formed' version
+    - Added openbox style menu
 - Sep 1, 2019: Initial commit
 
 ### Tested On
 Windows 10
 
-### Thanks
+### Issues
+Terminal hotkeys require the new [Windows Terminal](https://github.com/microsoft/terminal)
+
+### Inspiration
 - [Altdrag](https://github.com/stefansundin/altdrag)
 - [sowm](https://github.com/dylanaraps/sowm)
 - And many others

@@ -12,32 +12,31 @@ RightTilePos := (A_ScreenWidth / 2) + gap
 BottomTilePos := (TaskHeight / 2) + gap
 
 ;Left
-CapsLock & ,::
+LWin & ,::
 WinMove, A,,%gap%,%gap%, %TileWidth%, %FullTileHeight%, 
 return 
 
- ;Right
- CapsLock & .::
- WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %FullTileHeight%, 
- return 
+;Right
+LWin & .::
+WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %FullTileHeight%, 
+return 
 
+;Left Top
+LWin & RAlt::
+WinMove, A,,%gap%,%gap%, %TileWidth%, %TileHeight%, 
+return 
 
- ;Left Top
- CapsLock & RAlt::
- WinMove, A,,%gap%,%gap%, %TileWidth%, %TileHeight%, 
- return 
+;Right Top
+LWin & RWin::
+WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %TileHeight%, 
+return 
 
- ;Right Top
- CapsLock & RWin::
- WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %TileHeight%, 
- return 
+;Left Bottom
+LWin & AppsKey::
+WinMove, A,,%gap%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
+return 
 
- ;Left Bottom
- CapsLock & AppsKey::
- WinMove, A,,%gap%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
- return 
-
- ;Right Bottom
- CapsLock & RCtrl::
- WinMove, A,,%RightTilePos%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
- return 
+;Right Bottom
+LWin & RCtrl::
+WinMove, A,,%RightTilePos%,%BottomTilePos%, %TileWidth%, %TileHeight%, 
+return 

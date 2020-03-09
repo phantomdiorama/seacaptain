@@ -6,23 +6,23 @@
 #Warn
 SendMode Input
 SetWorkingDir %A_ScriptDir%
-SetCapsLockState, AlwaysOff
+SetCapslockState, AlwaysOff
 Menu, Tray, Icon, icon.ico
+Menu, Tray, Tip, SeaCaptain v1.5
 #include *i %A_ScriptDir%\lib\tile.ahk
 
-CapsLock & r::
+LWin & r::
 Reload
 return 
 
 ;--Windows, Sizing and Movement--;
 
 ;kill window
-
-Capslock & q::
+LWin & q::
 SendInput, !{F4}
 return 
 
-CapsLock & rbutton::
+LWin & rbutton::
 WinGetActiveTitle, Title
 If MouseIsOver(Title)
 { 
@@ -31,7 +31,7 @@ WinClose, A
 return 
 
 ; MinMax
-Capslock & f::
+LWin & f::
 WinGet, OutputVar, MinMax, A
 if OutputVar = 0
 {
@@ -43,71 +43,67 @@ else
 }
 return
 
+; Minimize All
+#If MouseIsOver("ahk_class Shell_TrayWnd")
+	MButton::
+	Send, #d
+	return 
+#If
+
 ; Up
-CapsLock & Up::
-if GetKeyState("Shift")
-{
-    WinGetPos, , , x, y, A
-    y -= 100
-    WinMove, A, , , , %x%, %y%
-}
-else {
-    WinGetPos, x, y, , , A
-    y -= 100
-    WinMove, A,, %x%, %y% 
-}
+LAlt & Up::
+WinGetPos, , , x, y, A
+y -= 100
+WinMove, A, , , , %x%, %y%
+return 
+
+LWin & Up::
+WinGetPos, x, y, , , A
+y -= 100
+WinMove, A,, %x%, %y% 
 return 
 
 ; Down
-CapsLock & Down::
-if GetKeyState("Shift")
-{
-    WinGetPos, , , x, y, A
-    y += 100
-    WinMove, A, , , , %x%, %y%
-}
-else 
-{
-    WinGetPos, x, y, , , A
-    y += 100
-    WinMove, A,, %x%, %y% 
-}
+LAlt & Down::
+WinGetPos, , , x, y, A
+y += 100
+WinMove, A, , , , %x%, %y%
+return 
+
+LWin & Down::
+WinGetPos, x, y, , , A
+y += 100
+WinMove, A,, %x%, %y% 
 return 
 
 ; Left
-CapsLock & Left::
-if GetKeyState("Shift")
-{
-    WinGetPos, , , x, y, A
-    x -= 100
-    WinMove, A, , , , %x%, %y%
-}
-else
-{
-    WinGetPos, x, y, , , A
-    x -= 100
-    WinMove, A,, %x%, %y% 
-} 
+LAlt & Left::
+WinGetPos, , , x, y, A
+x -= 100
+WinMove, A, , , , %x%, %y%
+return 
+
+LWin & Left::
+WinGetPos, x, y, , , A
+x -= 100
+WinMove, A,, %x%, %y% 
 return 
 
 ; Right
-CapsLock & Right::
-if GetKeyState("Shift")
-{
-    WinGetPos, , , x, y, A
-    x += 100
-    WinMove, A, , , , %x%, %y%
-}
-else
-{
-    WinGetPos, x, y, , , A
-    x += 100
-    WinMove, A,, %x%, %y% 
-}
+LAlt & Right::
+WinGetPos, , , x, y, A
+x += 100
+WinMove, A, , , , %x%, %y%
 return 
 
-;--Centre Window--;
-CapsLock & c::
+LWin & Right::
+WinGetPos, x, y, , , A
+x += 100
+WinMove, A,, %x%, %y% 
+return 
+
+; Centre Window
+LWin & c::
 WinExist("A")
 WinGetPos,,, sizeX, sizeY
 WinMove, (A_ScreenWidth/2)-(sizeX/2), (A_ScreenHeight/2)-(sizeY/2)
