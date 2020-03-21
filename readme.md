@@ -1,41 +1,36 @@
 ## Sea Captain
 A kinda sorta not really window manager that builds on Windows' defaults. 
 
+- Windows movement hotkeys
+- Windows sizing hotkeys
+- Fullscreen toggle
+- Window centering
+- [Altdrag](https://github.com/stefansundin/altdrag) -style windows movement 
+- Pseudo tiling (with gaps)
+- No Titlebars (optional)
+
+
 **Note:** Development is very active. Things will change a lot.
 
 ### Requirements
 * [AutoHotKey](https://autohotkey.com/download/)
 
-
 ### Window Management
 **Key**|**Action**
 :-----:|:-----:
-Windows + q|Close window
-Windows + f|Fullscreen toggle
-Windows + Arrows|Move window
-Alt + Arrows|Resize window
-Windows + c|Center window
-Windows + , .|Pseudo tile left/right
-Windows + RAlt/RWin/Appskey/RCtrl|Pseudo tile corners
-Windows + Mouse left|Move window
-Windows + Mouse Right|Close window
+Capslock + q|Close window
+Capslock + f|Fullscreen toggle
+Capslock + Arrows|Move window
+Capslock + Shift + Arrows|Resize window
+Capslock + c|Center window
+Capslock + , .|Pseudo tile left/right
+Capslock + 1234|Pseudo tile corners
+Capslock + Mouse left|Move window
+Capslock + Mouse Right|Close window
+Capslock + space|open terminal / open terminal at folder*
+Capslock + r|reload
 Middle Mouse (on taskbar)|Minimize all
-
-### Hotkeys
-**key**|**action**
-:-----:|:-----:
-Middle mouse (on desktop)|open seamenu 
-Windows + space|open terminal / open terminal at folder*
-Windows + r|reload
-
-### Changelog
-- Mar 9, 2020: Version 1.5
-    - SeaCaptain was conceived as a way to give a use to the useless `CapsLock` key. But after extended use the ergonomics were not quite right, so hotkeys have been adapted to use the `Win` key.
-    - System menu items now work correctly.
-- Feb 29, 2020: Version 1.0
-    - First 'fully formed' version
-    - Added openbox style menu
-- Sep 1, 2019: Initial commit
+Middle mouse (on desktop)|Open menu
 
 ### Tested On
 Windows 10

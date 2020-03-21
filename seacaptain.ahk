@@ -2,27 +2,31 @@
 ;--SeaCaptain--;
 ;--------------;
 
+TaskBar := 32
+gap := 24
+
 #NoEnv
 #Warn
 SendMode Input
 SetWorkingDir %A_ScriptDir%
-SetCapslockState, AlwaysOff
 Menu, Tray, Icon, icon.ico
-Menu, Tray, Tip, SeaCaptain v1.5
-#include *i %A_ScriptDir%\lib\tile.ahk
+Menu, Tray, Tip, SeaCaptain v2.0
+SetCapsLockState, AlwaysOff
 
-LWin & r::
+#include %A_ScriptDir%\lib\tile.ahk 
+
+Capslock & r::
 Reload
 return 
 
 ;--Windows, Sizing and Movement--;
 
 ;kill window
-LWin & q::
+Capslock & q::
 SendInput, !{F4}
 return 
 
-LWin & rbutton::
+Capslock & rbutton::
 WinGetActiveTitle, Title
 If MouseIsOver(Title)
 { 
@@ -31,7 +35,7 @@ WinClose, A
 return 
 
 ; MinMax
-LWin & f::
+Capslock & f::
 WinGet, OutputVar, MinMax, A
 if OutputVar = 0
 {
@@ -51,63 +55,72 @@ return
 #If
 
 ; Up
-LAlt & Up::
-WinGetPos, , , x, y, A
-y -= 100
-WinMove, A, , , , %x%, %y%
-return 
-
-LWin & Up::
-WinGetPos, x, y, , , A
-y -= 100
-WinMove, A,, %x%, %y% 
-return 
+Capslock & Up::
+If GetKeyState("Shift", "P")
+{
+    WinGetPos, , , x, y, A
+    y -= 100
+    WinMove, A, , , , %x%, %y%
+    return 
+}
+else
+{
+    WinGetPos, x, y, , , A
+    y -= 100
+    WinMove, A,, %x%, %y% 
+    return 
+}
 
 ; Down
-LAlt & Down::
-WinGetPos, , , x, y, A
-y += 100
-WinMove, A, , , , %x%, %y%
-return 
-
-LWin & Down::
-WinGetPos, x, y, , , A
-y += 100
-WinMove, A,, %x%, %y% 
-return 
+Capslock & Down::
+If GetKeyState("Shift", "P")
+{
+    WinGetPos, , , x, y, A
+    y += 100
+    WinMove, A, , , , %x%, %y%
+    return 
+}
+Else
+{
+    WinGetPos, x, y, , , A
+    y += 100
+    WinMove, A,, %x%, %y% 
+    return 
+}
 
 ; Left
-LAlt & Left::
-WinGetPos, , , x, y, A
-x -= 100
-WinMove, A, , , , %x%, %y%
-return 
-
-LWin & Left::
-WinGetPos, x, y, , , A
-x -= 100
-WinMove, A,, %x%, %y% 
-return 
+Capslock & Left::
+If GetKeyState("Shift", "P")
+{
+    WinGetPos, , , x, y, A
+    x -= 100
+    WinMove, A, , , , %x%, %y%
+    return 
+}
+Else
+{
+    WinGetPos, x, y, , , A
+    x -= 100
+    WinMove, A,, %x%, %y% 
+    return 
+}
 
 ; Right
-LAlt & Right::
-WinGetPos, , , x, y, A
-x += 100
-WinMove, A, , , , %x%, %y%
-return 
-
-LWin & Right::
-WinGetPos, x, y, , , A
-x += 100
-WinMove, A,, %x%, %y% 
-return 
-
-; Centre Window
-LWin & c::
-WinExist("A")
-WinGetPos,,, sizeX, sizeY
-WinMove, (A_ScreenWidth/2)-(sizeX/2), (A_ScreenHeight/2)-(sizeY/2)
-return 
+Capslock & Right::
+If GetKeyState("Shift", "P")
+{
+    WinGetPos, , , x, y, A
+    x += 100
+    WinMove, A, , , , %x%, %y%
+    return 
+}
+Else
+{
+    WinGetPos, x, y, , , A
+    x += 100
+    WinMove, A,, %x%, %y% 
+    return 
+}
 
 ;--SeaMenu--;
 #If MouseIsOver("ahk_class Progman") or MouseIsOver("ahk_class WorkerW")
@@ -123,5 +136,6 @@ MouseIsOver(WinTitle) {
 return 
 
 #include %A_ScriptDir%\lib\seamenu.ahk
-#include *i %A_ScriptDir%\lib\easy.ahk
+#include %A_ScriptDir%\lib\easy.ahk
 #include *i %A_ScriptDir%\lib\term.ahk
+;#include *i %A_ScriptDir%\lib\notitle.ahk
