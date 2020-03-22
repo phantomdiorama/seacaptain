@@ -1,4 +1,4 @@
-﻿LWin & Space::
+﻿Capslock & a::
 Run, wt
 return 
 

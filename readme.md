@@ -10,7 +10,7 @@ A kinda sorta not really window manager that builds on Windows' defaults.
 - No Titlebars (optional)
 
 
-**Note:** Development is very active. Things will change a lot.
+**Note:** Development is active. Things will change a lot.
 
 ### Requirements
 * [AutoHotKey](https://autohotkey.com/download/)
@@ -25,10 +25,14 @@ Capslock + Shift + Arrows|Resize window
 Capslock + c|Center window
 Capslock + , .|Pseudo tile left/right
 Capslock + 1234|Pseudo tile corners
+Capslock + a|open terminal / open terminal at folder*
+Capslock + r|reload
+
+### Mouse
+**Key**|**Action**
+:-----:|:-----:
 Capslock + Mouse left|Move window
 Capslock + Mouse Right|Close window
-Capslock + space|open terminal / open terminal at folder*
-Capslock + r|reload
 Middle Mouse (on taskbar)|Minimize all
 Middle mouse (on desktop)|Open menu
 
