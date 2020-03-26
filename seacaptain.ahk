@@ -2,7 +2,11 @@
 ;--SeaCaptain--;
 ;--------------;
 
+; Use WindowSpy to find out taskbar height. 
+; On 1920x1080 it defaults to "32". Use "0" for none.
 TaskBar := 32
+
+;Gap size. Use "0" for none.
 gap := 24
 
 #NoEnv
@@ -21,8 +25,13 @@ return
 
 ;--Windows, Sizing and Movement--;
 
+;Window chooser
+CapsLock & Tab::
+SendInput, ^!{Tab}
+return 
+
 ;kill window
-Capslock & q::
+Capslock & x::
 SendInput, !{F4}
 return 
 
@@ -55,6 +64,7 @@ return
 #If
 
 ; Up
+Capslock & w::
 Capslock & Up::
 If GetKeyState("Shift", "P")
 {
@@ -72,6 +82,7 @@ else
 }
 
 ; Down
+Capslock & s::
 Capslock & Down::
 If GetKeyState("Shift", "P")
 {
@@ -89,6 +100,7 @@ Else
 }
 
 ; Left
+Capslock & a::
 Capslock & Left::
 If GetKeyState("Shift", "P")
 {
@@ -106,6 +118,7 @@ Else
 }
 
 ; Right
+Capslock & d::
 Capslock & Right::
 If GetKeyState("Shift", "P")
 {

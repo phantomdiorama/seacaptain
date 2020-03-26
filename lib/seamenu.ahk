@@ -1,7 +1,7 @@
-﻿#NoEnv
-#Warn
-SendMode Input
-SetWorkingDir %A_ScriptDir%
+﻿; #NoEnv
+; #Warn
+; SendMode Input
+; SetWorkingDir %A_ScriptDir%
 
 Loop Files, %A_ScriptDir%\menu\*.lnk 
 {

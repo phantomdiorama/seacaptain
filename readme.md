@@ -1,14 +1,14 @@
 ## Sea Captain
-A kinda sorta not really window manager that builds on Windows' defaults. 
+A kinda sorta not really window manager that builds on Windows' defaults. Well, "window manager" is overstating it; SeaCaptain adds a bunch of hotkeys to manage windows more comfortable.
 
 - Windows movement hotkeys
 - Windows sizing hotkeys
 - Fullscreen toggle
 - Window centering
-- [Altdrag](https://github.com/stefansundin/altdrag) -style windows movement 
+- [Altdrag](https://github.com/stefansundin/altdrag)-style windows movement 
 - Pseudo tiling (with gaps)
 - No Titlebars (optional)
-
+- Mix of mouse and keyboard workflow.
 
 **Note:** Development is active. Things will change a lot.
 
@@ -18,15 +18,15 @@ A kinda sorta not really window manager that builds on Windows' defaults.
 ### Window Management
 **Key**|**Action**
 :-----:|:-----:
-Capslock + q|Close window
+Capslock + x|Close window
 Capslock + f|Fullscreen toggle
-Capslock + Arrows|Move window
-Capslock + Shift + Arrows|Resize window
-Capslock + c|Center window
-Capslock + , .|Pseudo tile left/right
-Capslock + 1234|Pseudo tile corners
-Capslock + a|open terminal / open terminal at folder*
 Capslock + r|reload
+Capslock + c|Center window
+Capslock + wasd|Move window
+Capslock + Shift + wasd|Resize window
+Capslock + q/e|Pseudo tile left/right
+Capslock + 1234|Pseudo tile corners
+~|open terminal / open terminal at folder*
 
 ### Mouse
 **Key**|**Action**
@@ -43,9 +43,8 @@ Windows 10
 Terminal hotkeys require the new [Windows Terminal](https://github.com/microsoft/terminal)
 
 ### Inspiration
-- [Altdrag](https://github.com/stefansundin/altdrag)
 - [sowm](https://github.com/dylanaraps/sowm)
+- [Altdrag](https://github.com/stefansundin/altdrag)
 - And many others
 
-Icon by [Papirus](https://github.com/PapirusDevelopmentTeam) under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
-
+Icon by [Papirus](https://github.com/PapirusDevelopmentTeam) under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) 

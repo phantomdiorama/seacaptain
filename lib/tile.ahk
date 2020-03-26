@@ -7,12 +7,12 @@ RightTilePos := (A_ScreenWidth / 2) + gap
 BottomTilePos := (TaskHeight / 2) + gap
 
 ;Left
-Capslock & ,::
+Capslock & q::
 WinMove, A,,%gap%,%gap%, %TileWidth%, %FullTileHeight%, 
 return 
 
 ;Right
-Capslock & .::
+Capslock & e::
 WinMove, A,,%RightTilePos%,%gap%, %TileWidth%, %FullTileHeight%, 
 return 
 
